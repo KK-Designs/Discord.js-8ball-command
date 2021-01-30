@@ -1,8 +1,7 @@
-//ignore the amount of crap here
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const { Client, MessageAttachment } = require('discord.js');
-const log = console.log;
 const fs = require('fs');
 
 client.commands = new Discord.Collection();
