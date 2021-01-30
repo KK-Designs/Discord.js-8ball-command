@@ -19,7 +19,7 @@ A simple discord.js 8ball command!
 **Bot**: `My reply is no.`\
 
 
-See how to use it [here](https://codepen.io/kk-designs/pen/BaQyydM, 'See how to use it here')
+See how to use it [here](https://codepen.io/kk-designs/pen/BaQyydM 'See how to use it here')
 
 ---
 
