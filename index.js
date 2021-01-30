@@ -40,5 +40,6 @@ client.on("message", async message => {
       if (command === '8ball') {
         client.commands.get('8ball').execute(message, args);
       }
-
+)};
+	  
 client.login(process.env.DISCORD_TOKEN);
