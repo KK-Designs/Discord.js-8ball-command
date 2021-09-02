@@ -1,6 +1,6 @@
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: Discord.Intents.FLAGS.GUILDS_MESSAGES });
 const { Client, MessageAttachment } = require('discord.js');
 const fs = require('fs');
 
