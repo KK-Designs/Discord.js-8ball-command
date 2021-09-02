@@ -8,7 +8,7 @@
 
 # Description
 
-A simple discord.js 8ball command!
+A simple discord.js 8ball command! Works with discord.js v13!
 
 ---
 
