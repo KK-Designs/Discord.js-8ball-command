@@ -8,7 +8,7 @@ module.exports = {
           return message.reply('Please ask me a question.');
         }
         else {
-          message.channel.startTyping();
+          message.channel.sendTyping();
           let eightball = [
             'It is certain.',
             'It is decidedly so.',
@@ -43,9 +43,8 @@ module.exports = {
             'Good Luck',
           ];
           let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
-          setTimeout(() => {
-            message.channel.stopTyping();
-            message.reply(eightball[index]);
+          setTimeout(() => {            
+            message.channel.send({ content: eightball[index], reply: { messageReference: message.id }});
           }, 750);
           //});
         }
