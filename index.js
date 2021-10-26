@@ -1,11 +1,8 @@
-
-const Discord = require('discord.js');
-const client = new Discord.Client({ intents: Discord.Intents.FLAGS.GUILDS_MESSAGES });
-const { Client, MessageAttachment } = require('discord.js');
+const { Client, MessageAttachment, Intents, Collection } = require('discord.js');
+const client = new Client({ intents: Intents.FLAGS.GUILD, Intents.FLAGS.GUILDS_MESSAGES });
 const fs = require('fs');
-
-client.commands = new Discord.Collection();
-let commands = client.commands = new Discord.Collection();
+client.commands = new Collection();
+let commands = client.commands = new Collection();
 
 
 
@@ -16,30 +13,26 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-const version = '5.8.7';
-
 client.once('ready', () => {
-  console.log('Ready!');
+	console.log('Ready!');
 });
 
 
-client.on("message", async message => {
+client.on("messageCreate", async message => {
+		const user = message.mentions.users.first() || message.author;
+		const member = message.channel.members;
+		const members = message.channel.members;
+		const guild = message.guild;
+		const prefix = "!";
+		if (message.author.bot || message.content.toLowerCase().startsWith(prefix)) return;
 
-  if (message.author.bot) return;
+		const args = message.content.slice(prefix.length).trim().split(/ +/);
+		const command = args.shift().toLowerCase();
 
-  const user = message.mentions.users.first() || message.author;
-  let member = message.channel.members;
-  let members = message.channel.members;
-  const guild = message.guild;
+		if (command === '8ball') {
+			client.commands.get('8ball').execute(message, args, client);
+		}
+	)
+};
 
-  let prefix = "!";
- 
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-
-      if (command === '8ball') {
-        client.commands.get('8ball').execute(message, args);
-      }
-)};
-	  
 client.login(process.env.DISCORD_TOKEN);
